@@ -1,0 +1,16 @@
+[package]
+name = "rust-tracing-example"
+version = "0.1.0"
+edition = "2021"
+
+# Example of how to compile the profiling code conditionally through a feature flag
+[features]
+default = ["tracing"]
+tracing = ["profiling/profile-with-tracing", "dep:tracing", "dep:tracing-subscriber", "dep:tracing-chrome"]
+
+[dependencies]
+profiling = "1.0"
+rand = "0.10.0"
+tracing = { version = "0.1", optional = true }
+tracing-subscriber = { version = "0.3", features = ["registry", "fmt"], optional = true }
+tracing-chrome = { version = "0.7", optional = true }
